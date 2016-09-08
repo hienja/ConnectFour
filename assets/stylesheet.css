@@ -1,0 +1,35 @@
+#container {
+  padding: 0 5px;
+  height: 550px;
+  width: 560px;
+  background-color: blue;
+}
+
+.column {
+  margin: 0 5px;
+  height: 530px;
+  width: 80px;
+  display: inline-block;
+}
+
+.slot,
+.red,
+.yellow {
+  border-radius: 50%;
+  background-color: black;
+  width: 80px;
+  height: 80px;
+  margin: 10px 0;
+}
+
+.first:hover {
+  background-color: white;
+}
+
+.red {
+  background-color: red;
+}
+
+.yellow {
+  background-color: yellow;
+}
