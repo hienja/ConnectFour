@@ -71,6 +71,7 @@ var verticalConnection = function (columnNumber, color) {
   return maxConnection >= connectionsNeeded || runningConnection >= connectionsNeeded ? true : false;
 };
 
+//Runs from left to right and from bottom to top
 var minorDiagonalConnection = function (rowNumber, columnNumber, color) {
   var minorIndex = rowNumber + columnNumber;
   var maxConnection = 0;
@@ -97,6 +98,7 @@ var minorDiagonalConnection = function (rowNumber, columnNumber, color) {
   return false;
 };
 
+//Runs from left to right and from top to bottom
 var majorDiagonalConnection = function (rowNumber, columnNumber, color) {
   var majorIndex = rowNumber - columnNumber;
   var maxConnection = 0;
