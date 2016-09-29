@@ -11,17 +11,20 @@ for (var i = 0; i < rows; i++) {
   }
 } 
 
-document.addEventListener('DOMContentLoaded', function(){
-  document.getElementById('container').onclick = function(event){
-    var column = event.target.classList.contains('first');
+document.addEventListener('DOMContentLoaded', function () {
+  document.getElementById('container').onclick = function (event) {
+    var column = event.target.classList.contains('slot');
     var parent = event.target.parentElement;
     var columnNumber = Number(parent.getAttribute('id')) - 1;
+    var children = parent.children;
+    var condition = true;
+
     if (column) {
-      var children = parent.children;
-      var condition = true; 
       for (var rowNumber = children.length - 1; rowNumber >= 0 && condition ; rowNumber--) {
         if (board[rowNumber][columnNumber] !== 'red' && board[rowNumber][columnNumber] !== 'yellow') {
-          children[rowNumber].className = color;
+          children[rowNumber].className = 'slot ' + color;
+          color = color === 'red' ? 'yellow' : 'red';
+          parent.firstElementChild.style.background = color;
           board[rowNumber][columnNumber] = color;
           if (horizontalConnection(rowNumber, color)) {
             console.log('connection made horizontally');
@@ -38,9 +41,22 @@ document.addEventListener('DOMContentLoaded', function(){
           condition = false;
         }
       }
-      color = color === 'red' ? 'yellow' : 'red';
     }
   };
+  document.getElementById('container').onmouseover = function (event) {
+    var column = event.target.classList.contains('slot');
+    var parent = event.target.parentElement;
+    if (column) {
+      parent.firstElementChild.style.background = color;
+    }
+  };
+  document.getElementById('container').onmouseout = function () {
+    var column = event.target.classList.contains('slot');
+    var parent = event.target.parentElement;
+    if (column) {
+      parent.firstElementChild.style.background = 'white';
+    }
+  }
 });
 
 var horizontalConnection = function (rowNumber, color) {

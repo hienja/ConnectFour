@@ -16,15 +16,11 @@
 .slot,
 .red,
 .yellow {
+  background-color: white;
   border-radius: 50%;
-  background-color: black;
   width: 80px;
   height: 80px;
   margin: 10px 0;
-}
-
-.first:hover {
-  background-color: white;
 }
 
 .red {
